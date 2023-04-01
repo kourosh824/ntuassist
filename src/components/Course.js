@@ -4,17 +4,17 @@ import { useState } from "react";
 
 import courseStyles from '../styles/course.module.css';
 
-const Course = ({ index, courseName, addCourse, removeCourse, addSum, removeSum }) => {
+const Course = ({ index, courseName, addCourse, removeCourse, addScore, removeSum }) => {
     const [courseReg, setCourseReg] = useState(false);
     const [score, setScore] = useState(0);
 
     const handleCheckboxClick = (e) => {
         if(courseReg) {
-            removeCourse();
+            removeCourse(index);
             setCourseReg(false);
             setScore(0);
         } else {
-            addCourse();
+            addCourse(courseName, score);
             setCourseReg(true);
         }
     };
@@ -29,12 +29,13 @@ const Course = ({ index, courseName, addCourse, removeCourse, addSum, removeSum 
             val = 10;
         }
         setScore(val);
+        addScore(index, score);
     };
 
     return (
         <div
         className={courseStyles['course-container']}>
-            <h2>{courseName}</h2>
+            <h2>{index} - {courseName}</h2>
             <div>
                 <input
                 type="number"

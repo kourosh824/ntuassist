@@ -12,6 +12,7 @@ const HomePage = () => {
         (sem, index) => {
             return (
                 <Semester
+                key={index}
                 semesterIndex={index}
                 courses={sem} />
             );
