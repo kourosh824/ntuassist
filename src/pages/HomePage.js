@@ -1,5 +1,7 @@
 import React from "react";
 import Semester from "../components/Semester";
+import Header from "../components/Header";
+import Sidebar from "../components/Sidebar";
 import useSemesterData from '../hooks/useSemesterData';
 
 const semesters = [
@@ -42,6 +44,9 @@ const HomePage = () => {
 
     return (
         <div>
+            <Sidebar />
+            <Header
+            title={'NTUAssist'} />
             {sems}
         </div>
     );
