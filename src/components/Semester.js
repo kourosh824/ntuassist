@@ -5,18 +5,16 @@ import { Chart } from "chart.js/auto";
 
 import Course from './Course';
 
+import semesterStyles from '../styles/semester.module.css';
+
 const Semester = ({ semesterIndex, courses }) => {
     const coursesTitle = [];
     const numCourses = courses.length;
     const [coursesScore, setCoursesScore] = useState(Array(numCourses).fill(0));
     const [GPA, setGPA] = useState(0);
 
-    courses.forEach(crs => {
-        if(Array.isArray(crs)) {
-            coursesTitle.push('Μάθημα Επιλογής');
-        } else {
-            coursesTitle.push(crs);
-        }
+    courses.forEach((crs, index) => {
+        coursesTitle.push(index + 1);
     });
 
     const calculateGPA = () => {
@@ -36,9 +34,18 @@ const Semester = ({ semesterIndex, courses }) => {
     useEffect(calculateGPA);
 
     return (
-        <div>
-            <h1>Semester {semesterIndex + 1}</h1>
-            <div>
+        <div
+        className={semesterStyles['semester']}>
+            <div
+            className={semesterStyles['semester__left']}>
+                <h1
+                className={semesterStyles['semester__left-title']}>
+                    {semesterIndex + 1}
+                    <sup>
+                        o
+                    </sup>
+                    {' '}Εξάημνο
+                </h1>
                 {courses.map((title, crsIndex) => {
                     let isOptional = false;
                     if(Array.isArray(title)) {
@@ -53,19 +60,23 @@ const Semester = ({ semesterIndex, courses }) => {
                         changeScore={handleGetCourseScore} />
                     );
                 })}
+            </div>
+            <div
+            className={semesterStyles['semester__right']}>
                 <Bar
+                className={semesterStyles['semester__right-chart']}
                 data={{
-                    labels: coursesTitle,
+                    labels: coursesTitle.map((t) => (`(${t})`)),
                     datasets: [{
                             label: 'Scores',
-                            backgroundColor: 'rgba(75,192,192,1)',
+                            backgroundColor: 'rgba(99, 110, 114, 100)',
                             borderColor: 'rgba(0,0,0,1)',
                             borderWidth: 2,
                             data: coursesScore,
                     }]
                 }} />
                 <div>
-                    {GPA}
+                    Μ.Ο: {GPA}
                 </div>
             </div>
         </div>

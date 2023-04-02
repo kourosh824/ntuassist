@@ -4,6 +4,8 @@ import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import useSemesterData from '../hooks/useSemesterData';
 
+import homeStyles from '../styles/homePage.module.css';
+
 const semesters = [
     [
         'Γραμμική Άλγεβρα',
@@ -43,11 +45,15 @@ const HomePage = () => {
     );
 
     return (
-        <div>
+        <div
+        className={homeStyles['homepage']}>
             <Sidebar />
             <Header
             title={'NTUAssist'} />
-            {sems}
+            <div
+            className={homeStyles['homepage__semesters']}>
+                {sems}
+            </div>
         </div>
     );
 };

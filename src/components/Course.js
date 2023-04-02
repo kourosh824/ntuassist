@@ -45,9 +45,10 @@ const Course = ({ index, title, optional, changeScore }) => {
         <div
         className={courseStyles['course-container']}>
             {!optional &&
-            <h2>{title}</h2>}
+            <h2>{index + 1} - {title}</h2>}
             {optional &&
             <div>
+                {index + 1} + {' '}
                 <select>
                     {title.map(t =>
                         <option>{t}</option>
