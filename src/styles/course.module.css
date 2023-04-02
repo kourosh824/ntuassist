@@ -1,8 +1,23 @@
-.course-container {
+.course {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: red;
-    margin: 2vw;
+    margin: 1vh;
     align-items: center;
+}
+
+.course__title {
+    font-size: 2vh;
+    flex-grow: 2;
+}
+
+.course__select {
+    font-family: 'Comfortaa', cursive;
+    font-size: 2vh;
+    border: none;
+    outline: none;
+    color: var(--bg-lite);
+    padding: .5vh;
+    background-color: var(--prim-dark);
+    margin-right: .5vh;
 }

@@ -32,36 +32,34 @@ const Course = ({ index, title, optional, changeScore }) => {
     // };
     const handleScoreChange = (e) => {
         let val = parseInt(e.target.value);
-        if(val < 0) {
-            val = 0;
-        } else if (val > 10) {
-            val = 10;
-        }
         setScore(val);
         changeScore(index, val);
     };
 
     return (
         <div
-        className={courseStyles['course-container']}>
+        className={courseStyles['course']}>
             {!optional &&
-            <h2>{index + 1} - {title}</h2>}
+            <p
+            className={courseStyles['course__title']}>
+                {index + 1} - {title}
+            </p>}
             {optional &&
-            <div>
-                {index + 1} + {' '}
-                <select>
-                    {title.map(t =>
-                        <option>{t}</option>
-                    )}
-                </select>
-            </div>}
-            <div>
-                <input
-                type="number"
-                min={0}
-                max={10}
-                onChange={handleScoreChange} />
-            </div>
+            <select
+            className={courseStyles['course__select']}>
+                {title.map(t =>
+                    <option>{index + 1} - {' '} {t}</option>
+                )}
+            </select>}
+            <select
+            onChange={handleScoreChange}
+            className={courseStyles['course__select']}>
+                {
+                    Array.from(Array(11).keys()).map((num) => 
+                        <option>{num}</option>
+                    )
+                }
+            </select>
         </div>
     );
 };
