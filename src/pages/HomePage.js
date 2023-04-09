@@ -2,7 +2,6 @@ import React from "react";
 import Semester from "../components/Semester";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
-import useSemesterData from '../hooks/useSemesterData';
 
 import homeStyles from '../styles/homePage.module.css';
 
@@ -51,7 +50,7 @@ const HomePage = () => {
             <Header
             title={'NTUAssist'} />
             <div
-            className={homeStyles['homepage__semesters']}>
+            className={homeStyles['homepage__content']}>
                 {sems}
             </div>
         </div>
