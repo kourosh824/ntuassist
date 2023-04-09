@@ -3,15 +3,19 @@ import { TrashFill } from "react-bootstrap-icons";
 
 import todoStyles from '../styles/todo.module.css';
 
-const Todo = ({ prompt }) => {
+const Todo = ({ index, prompt, onRemove }) => {
+    const handleTodoRemoved = () => {
+        onRemove(index);
+    };
     return (
         <div
         className={todoStyles['todo']}>
             <div
             className={todoStyles['todo__prompt']}>
-                THIS IS TODO
+                {prompt}
             </div>
             <div
+            onClick={handleTodoRemoved}
             className={todoStyles['todo__delete']}>
                 <TrashFill
                 className={todoStyles['todo__delete-icon']}

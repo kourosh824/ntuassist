@@ -3,7 +3,7 @@
     to {opacity: 50%;}
 }
 
-.todo {
+.addtodo {
     width: 95%;
     margin-bottom: 4vh;
     background-color: var(--bg-dark);
@@ -13,24 +13,28 @@
     justify-content: space-between;
 }
 
-.todo__prompt {
+.addtodo__input {
+    align-self: stretch;
+    outline: none;
+    border: none;
     padding: 2vh;
     flex-grow: 2;
+    font-family: 'Comfortaa', cursive;
 }
 
-.todo__delete {
-    background-color: var(--red);
+.addtodo__add {
+    background-color: var(--blue);
     color: var(--bg-lite);
     align-self: stretch;
     display: flex;
     align-items: center;
 }
 
-.todo__delete:hover {
+.addtodo__add:hover {
     cursor: pointer;
     animation: .2s hover-opacity-effect forwards;
 }
 
-.todo__delete-icon {
+.addtodo__add-icon {
     padding: 1vh;
 }
