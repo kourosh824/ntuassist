@@ -9,12 +9,21 @@ import AddTodo from "../components/AddTodo";
 const TodoPage = () => {
     const [todos, setTodos] = useState([]);
     const [todoIndex, setTodoIndex] = useState(0);
-    const addTodo = (prompt) => {
-        setTodos(old => [...old, [todoIndex, prompt]]);
-        setTodoIndex(todoIndex+1);
+    const addTodo = (text) => {
+        if(text) {
+            const date = new Date();
+            setTodos(old => [...old, {
+                index: todoIndex,
+                prompt: text,
+                day: date.getDay(),
+                month: date.getMonth(),
+                year: date.getFullYear(),
+            }]);
+            setTodoIndex(todoIndex+1);
+        }
     };
     const removeTodo = (index) => {
-        setTodos(old => old.filter(item => item[0] !== index));
+        setTodos(old => old.filter(item => item.index !== index));
     };
     return (
         <div
@@ -29,9 +38,12 @@ const TodoPage = () => {
                 {todos.map((todo) => {
                     return (
                         <Todo
-                        key={todo[0]}
-                        index={todo[0]}
-                        prompt={todo[1]}
+                        key={todo.index}
+                        index={todo.index}
+                        prompt={todo.prompt}
+                        day={todo.day}
+                        month={todo.month}
+                        year={todo.year}
                         onRemove={removeTodo} />
                     )
                 })}

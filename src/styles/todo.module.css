@@ -13,8 +13,17 @@
     justify-content: space-between;
 }
 
+.todo__info {
+    flex-grow: 2;
+}
+
+.todo__date {
+    padding: 2vh 2vh 0vh 2vh;
+    font-weight: bolder;
+}
+
 .todo__prompt {
-    padding: 2vh;
+    padding: 0vh 2vh 2vh 2vh;
     flex-grow: 2;
 }
 

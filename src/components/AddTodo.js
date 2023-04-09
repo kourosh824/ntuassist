@@ -1,17 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { PencilSquare } from "react-bootstrap-icons";
 
 import addTodoStyles from '../styles/addTodo.module.css';
 
 const AddTodo = ({ onAdd }) => {
     const [prompt, setPrompt] = useState('');
+
     const handlePromptChange = (e) => {
         setPrompt(e.target.value);
     };
+    const onEnterPressed = (event) => {
+        if(event.key === 'Enter') {
+            onAdd(prompt);
+        }
+    };
+
     return (
         <div
         className={addTodoStyles['addtodo']}>
             <input
+            onKeyDown={onEnterPressed}
             onChange={handlePromptChange}
             type="text"
             className={addTodoStyles['addtodo__input']} />
