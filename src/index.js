@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './index.css';
 import HomePage from './pages/HomePage';
 import TodoPage from './pages/TodoPage';
+import SignInPage from './pages/SignInPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -19,6 +20,9 @@ root.render(
             <Route
             path="/todo"
             element={<TodoPage />} />
+            <Route
+            path="/signin"
+            element={<SignInPage />} />
         </Routes>
     </BrowserRouter>
 );
