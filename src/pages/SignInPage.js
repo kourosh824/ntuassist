@@ -10,6 +10,7 @@ import Alert from "../components/Alert";
 const SignInPage = () => {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
+    const [alerts, setAlerts] = useState([]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -19,13 +20,18 @@ const SignInPage = () => {
             console.log(userCred);
         })
         .catch((error) => {
-            console.log("what the heck");
+            setAlerts(old => [
+                ...old,
+                <Alert
+                type='error'
+                message='invalid credentials' 
+                delay={3000} />
+            ])
         })
     };
 
     return (
         <div>
-
             <div
             className={signInStyles['signin']}>
                 <div
@@ -59,9 +65,7 @@ const SignInPage = () => {
                     Submit
                 </button>
             </div>
-            <Alert
-            type={'error'}
-            message={'made by your friendly neighborhood kourosh824'} />
+            {alerts}    
         </div>
     );
 };
