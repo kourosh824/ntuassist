@@ -6,18 +6,20 @@ import { auth } from "../database/firebase";
 import logo from '../images/ntua-logo.svg';
 import signInStyles from '../styles/signInPage.module.css';
 import Alert from "../components/Alert";
+import { useNavigate } from "react-router-dom";
 
 const SignInPage = () => {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
     const [alerts, setAlerts] = useState([]);
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         signInWithEmailAndPassword(auth, email, pass)
         .then((userCred) => {
-            console.log(userCred);
+            navigate('/home')
         })
         .catch((error) => {
             setAlerts(old => [

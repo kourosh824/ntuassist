@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Semester from "../components/Semester";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 
 import homeStyles from '../styles/homePage.module.css';
+import { useNavigate } from "react-router-dom";
 
 const semesters = [
     [
@@ -32,6 +33,7 @@ const semesters = [
 ];
 
 const HomePage = () => {
+    const navigate = useNavigate();
     const sems = semesters.map(
         (sem, index) => {
             return (

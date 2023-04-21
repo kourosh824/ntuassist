@@ -5,6 +5,7 @@ import './index.css';
 import HomePage from './pages/HomePage';
 import TodoPage from './pages/TodoPage';
 import SignInPage from './pages/SignInPage';
+import DownloaderPage from './pages/DownloaderPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -16,7 +17,7 @@ root.render(
             element={<Navigate to="/home" />} /> 
             <Route
             path="/home"
-            element={<HomePage />} />
+            element={<DownloaderPage />} />
             <Route
             path="/todo"
             element={<TodoPage />} />
