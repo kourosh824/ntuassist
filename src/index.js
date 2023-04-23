@@ -2,10 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './index.css';
-import HomePage from './pages/HomePage';
-import TodoPage from './pages/TodoPage';
-import SignInPage from './pages/SignInPage';
-import DownPage from './pages/DownPage';
+import PracticeTestsPage from './pages/PracticeTestsPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -14,16 +11,10 @@ root.render(
         <Routes>
             <Route
             path="/"
-            element={<Navigate to="/home" />} /> 
+            element={<Navigate to="/practice" />} /> 
             <Route
-            path="/home"
-            element={<DownPage />} />
-            <Route
-            path="/todo"
-            element={<TodoPage />} />
-            <Route
-            path="/signin"
-            element={<SignInPage />} />
+            path="/practice"
+            element={<PracticeTestsPage />} />
         </Routes>
     </BrowserRouter>
 );

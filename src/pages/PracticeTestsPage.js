@@ -4,10 +4,10 @@ import { getDownloadURL, listAll, ref } from 'firebase/storage';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 
-import downStyles from '../styles/downPage.module.css'
+import practiceStyles from '../styles/downPage.module.css'
 import Dropdown from '../components/Dropdown';
 
-const DownPage = () => {
+const PracticeTestsPage = () => {
     const [defSem, setDefSem] = useState('');
     const [defCrs, setDefCrs] = useState('');
     const [defDwn, setDefDwn] = useState('');
@@ -80,52 +80,12 @@ const DownPage = () => {
 
     return (
         <div
-        className={downStyles['downpage']}>
+        className={practiceStyles['practicepage']}>
             <Header
             title={'να διαβάσουμε κι λίγο :)'} />
             <Sidebar />
             <div
-            className={downStyles['downpage__content']}>
-                {/* <select
-                onChange={handleSemesterChange}>
-                    {semesters.map((sem, index) => {
-                        return (
-                            <option
-                            key={index}
-                            value={sem}>
-                                {sem}
-                            </option>
-                        );
-                    })}
-                </select>
-                <select
-                onChange={handleCourseChange}>
-                    {courses.map((crs, index) => {
-                        return (
-                            <option
-                            key={index}
-                            value={crs}>
-                                {crs}
-                            </option>
-                        );
-                    })}
-                </select>
-                <select
-                onChange={handleDownloadChange}>
-                    {downloads.map((dnl, index) => {
-                        return (
-                            <option
-                            key={index}
-                            value={dnl}>
-                                {dnl}
-                            </option>
-                        );
-                    })}
-                </select>
-                <button
-                onClick={handleDownload}>
-                    Download
-                </button> */}
+            className={practiceStyles['practicepage__content']}>
                 <Dropdown
                 onChange={handleSemesterChange}
                 isSearchable
@@ -150,4 +110,4 @@ const DownPage = () => {
     );
 };
 
-export default DownPage;
+export default PracticeTestsPage;

@@ -1,7 +1,6 @@
-.downpage__content {
+.practicepage__content {
     margin-top: 18vh;
     margin-left: 8%;
-    display: flex;
     align-items: center;
     justify-content: center;
 }

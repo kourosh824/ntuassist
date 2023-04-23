@@ -1,5 +1,5 @@
 import React from "react";
-import { House, Speedometer2, Calendar2Event, People } from "react-bootstrap-icons";
+import { FileEarmark, Journals, People } from "react-bootstrap-icons";
 import sidebarStyles from '../styles/sidebar.module.css';
 import { useNavigate } from "react-router-dom";
 
@@ -13,15 +13,10 @@ const Sidebar = () => {
     return (
         <div
         className={sidebarStyles['sidebar']}>
-            <House
-            onClick={() => changePage('/home')}
+            <FileEarmark
             size={30}
             className={sidebarStyles['sidebar__item']} />
-            <Speedometer2
-            size={30}
-            className={sidebarStyles['sidebar__item']} />
-            <Calendar2Event
-            onClick={() => changePage('/todo')}
+            <Journals
             size={30}
             className={sidebarStyles['sidebar__item']} />
             <People

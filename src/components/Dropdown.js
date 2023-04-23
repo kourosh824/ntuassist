@@ -8,6 +8,7 @@ const Dropdown = ({ placeHolder, options, isSearchable, onChange }) => {
     const [selectedValue, setSelectedValue] = useState(null);
     const [searchValue, setSearchValue] = useState('');
     const searchRef = useRef();
+    const inputRef = useRef();
 
     useEffect(() => {
         setSearchValue('');
@@ -17,7 +18,11 @@ const Dropdown = ({ placeHolder, options, isSearchable, onChange }) => {
     }, [showMenu]);
 
     useEffect(() => {
-        const handler = () => setShowMenu(false);
+        const handler = (e) => {
+            if(inputRef.current && !inputRef.current.contains(e.target)) {
+                setShowMenu(false);
+            }
+        };
 
         window.addEventListener('click', handler);
         return () => {
@@ -26,7 +31,6 @@ const Dropdown = ({ placeHolder, options, isSearchable, onChange }) => {
     });
 
     const handleInputClick = (e) => {
-        e.stopPropagation();
         setShowMenu(!showMenu);
     };
 
@@ -70,6 +74,7 @@ const Dropdown = ({ placeHolder, options, isSearchable, onChange }) => {
         className={dropStyles['dropdown__container']}>
             <div
             onClick={handleInputClick}
+            ref={inputRef}
             className={dropStyles['dropdown__input']}>
                 <div
                 className={dropStyles['dropdown__selected-value']}>
