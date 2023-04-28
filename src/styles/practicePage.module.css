@@ -1,0 +1,21 @@
+.practicepage__content {
+    position: fixed;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 52%;
+    width: 80%;
+    align-items: stretch;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2vh;
+    box-shadow: .2vh .2vh 1vh var(--prim-lite);
+    background-color: var(--bg-lite);
+}
+
+.practicepage__title {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-size: 3vh;
+}

@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { storage } from '../database/firebase';
 import { getDownloadURL, listAll, ref } from 'firebase/storage';
+import { Download } from 'react-bootstrap-icons';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
+import Button from '../components/Button';
+import Alert from '../components/Alert';
 
-import practiceStyles from '../styles/downPage.module.css'
+import practiceStyles from '../styles/practicePage.module.css'
 import Dropdown from '../components/Dropdown';
 
 const PracticeTestsPage = () => {
@@ -14,6 +17,8 @@ const PracticeTestsPage = () => {
     const [semesters, setSemesters] = useState([]);
     const [courses, setCourses] = useState([]);
     const [downloads, setDownloads] = useState([]);
+
+    const [alerts, setAlerts] = useState([]);
     
     const handleSemesterChange = (sem) => {
         setDefSem(sem);
@@ -56,6 +61,18 @@ const PracticeTestsPage = () => {
     const handleDownload = (e) => {
         e.preventDefault();
         const defRef = `${defSem}/${defCrs}/${defDwn}`;
+        
+        if(defRef === '//') {
+            setAlerts(old => [
+                ...old,
+                <Alert
+                type='error'
+                message='μήπως να διαλέξεις ένα παλιό θέμα?' 
+                delay={3000} />
+            ]);
+            return;
+        }
+
         const downloadRef = ref(storage, defRef);
         getDownloadURL(downloadRef)
         .then((url) => {
@@ -82,10 +99,14 @@ const PracticeTestsPage = () => {
         <div
         className={practiceStyles['practicepage']}>
             <Header
-            title={'να διαβάσουμε κι λίγο :)'} />
+            title={'NTUAssist'} />
             <Sidebar />
             <div
             className={practiceStyles['practicepage__content']}>
+                <p
+                className={practiceStyles['practicepage__title']}>
+                    Παλιά Θέματα
+                </p>
                 <Dropdown
                 onChange={handleSemesterChange}
                 isSearchable
@@ -101,11 +122,13 @@ const PracticeTestsPage = () => {
                 isSearchable
                 placeHolder='Αρχείο'
                 options={downloads} />
-                <button
+                <Button
+                Icon={Download}
                 onClick={handleDownload}>
                     Download
-                </button>
+                </Button>
             </div>
+            {alerts}
         </div>
     );
 };

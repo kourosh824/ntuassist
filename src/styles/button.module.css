@@ -1,0 +1,24 @@
+@keyframes button-hover {
+    from {opacity: 100%;}
+    to {opacity: 80%;}
+}
+
+.button {
+    background-color: var(--prim-lite);
+    color: var(--bg-lite);
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 2vh;
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button__icon, .button__text {
+    margin: 1vh;
+}
+
+.button:hover {
+    animation: button-hover .1s forwards;
+}
